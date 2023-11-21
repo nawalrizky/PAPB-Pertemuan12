@@ -25,7 +25,7 @@ class NotesAdapter(private var notes: MutableList<Note>, private val context: Co
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.player_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.notes_item, parent, false)
         return NoteViewHolder(view)
     }
 
