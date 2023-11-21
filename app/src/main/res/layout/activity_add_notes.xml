@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".AddNotesActivity"
+    android:background="@color/black">
+
+    <ImageView
+        android:id="@+id/editimage"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="3dp"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/baseline_edit_24" />
+
+    <TextView
+        android:id="@+id/addNotesHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/editimage"
+        android:layout_marginStart="10dp"
+        android:text="Tambah Catatan"
+        android:textColor="@color/primary"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_cancel_24"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/addNotesHeading"
+        android:layout_marginEnd="10dp" />
+
+    <ImageView
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_done_24"
+        android:layout_toStartOf="@id/backButton"
+        android:layout_alignTop="@+id/addNotesHeading"
+        android:layout_marginEnd="10dp" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/noteTitleEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addNotesHeading"
+        android:layout_marginTop="16dp"
+        android:hint="Masukkan judul catatan"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/black"
+        android:maxLines="1"
+        android:padding="12dp"
+        android:paddingStart="20dp"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/noteContentEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/noteTitleEditText"
+        android:layout_marginTop="16dp"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/black"
+        android:hint="Masukkan isi catatan"
+        android:padding="12dp"
+        android:paddingStart="20dp"
+        android:textSize="20sp" />
+
+</RelativeLayout>
