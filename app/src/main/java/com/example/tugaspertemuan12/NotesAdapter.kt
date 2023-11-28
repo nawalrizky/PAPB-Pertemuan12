@@ -11,11 +11,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tugaspertemuan12.R
+import com.google.firebase.firestore.FirebaseFirestore
 
 class NotesAdapter(private var notes: MutableList<Note>, private val context: Context) :
     RecyclerView.Adapter<NotesAdapter.NoteViewHolder>() {
 
-    private val db: NoteDatabaseHelper = NoteDatabaseHelper(context)
+    private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
 
     class NoteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val noteTitleTextView: TextView = itemView.findViewById(R.id.noteTitleTextView)
@@ -48,10 +49,19 @@ class NotesAdapter(private var notes: MutableList<Note>, private val context: Co
                 setTitle("Delete Note")
                 setMessage("Are you sure you want to delete this note?")
                 setPositiveButton("Yes") { _, _ ->
-                    db.deleteNote(note.id)
-                    notes.removeAt(position)
-                    notifyItemRemoved(position)
-                    Toast.makeText(context, "Note deleted", Toast.LENGTH_SHORT).show()
+                    db.collection("notes").document(note.id).delete()
+                        .addOnSuccessListener {
+                            notes.removeAt(position)
+                            notifyItemRemoved(position)
+                            Toast.makeText(context, "Note deleted", Toast.LENGTH_SHORT).show()
+                        }
+                        .addOnFailureListener { e ->
+                            Toast.makeText(
+                                context,
+                                "Failed to delete note: ${e.message}",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                 }
                 setNegativeButton("No", null)
             }.create().show()

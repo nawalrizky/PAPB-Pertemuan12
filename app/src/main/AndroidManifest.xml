@@ -19,18 +19,6 @@
             android:name=".AddNotesActivity"
             android:exported="false" />
         <activity
-            android:name=".UpdatePlayerActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AddPlayerActivity"
-            android:exported="false" />
-        <activity
-            android:name=".EditNoteActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CreateNoteActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
